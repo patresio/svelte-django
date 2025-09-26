@@ -22,7 +22,7 @@
 	<div class="flex justify-between items-center gap-1 bg-zinc-700 px-6 py-4 rounded-sm">
 		<input
 			type="search"
-			placeholder="Search"
+			placeholder=""
 			class="shadow px-2 rounded-sm w-full text-blue-900"
 			bind:value={searchTerm}
 		/>

@@ -22,21 +22,31 @@
 				<p class="text-zinc-300 text-lg">{film.description}</p>
 			</div>
 		</div>
-		<div class="flex flex-col justify-between w-48 h-60">
-			<div class="flex flex-col justify-center items-center h-full">
+		<div class="flex flex-col gap-4 w-48">
+			<div class="flex flex-col justify-center items-center">
 				<div class="flex flex-col justify-center items-center bg-zinc-600 rounded-full w-22 h-22">
 					<p class="font-black text-2xl">{film.rating}</p>
 					<p class="font-bold text-zinc-400 text-sm">Nota</p>
 				</div>
 			</div>
-			<div class="flex flex-col justify-center items-center h-full">
-				<div class="flex items-center gap-2 jusfity-center">
-					<IconClockHour4 size={30} />
-					<p class="font-bold">Duração:</p>
+			<div class="flex flex-col justify-center items-center px-8 w-full">
+				<div
+					class="flex flex-col items-center bg-zinc-700 px-4 py-1 border border-zinc-600 rounded-lg w-full"
+				>
+					<div class="flex justify-end-safe items-center gap-2 w-full">
+						<IconClockHour4 size={30} />
+						<p class="font-bold">Duração:</p>
+					</div>
+					<div class="flex justify-end-safe items-center gap-2 w-full">
+						<p class="font-bold">{film.duration}</p>
+					</div>
 				</div>
-				<div class="flex items-center gap-2 jusfity-center">
-					<p class="font-bold">{film.duration}</p>
-				</div>
+			</div>
+			<div>
+				<p>Editar</p>
+			</div>
+			<div>
+				<p>Excluir</p>
 			</div>
 		</div>
 	</div>
