@@ -1,6 +1,21 @@
 <script lang="ts">
-	import { IconClockHour4 } from '@tabler/icons-svelte';
-	export let film;
+	import { IconClockHour4, IconTrash } from '@tabler/icons-svelte';
+	import type { Film } from '../../models/Film';
+	export let film: Film;
+	import { goto } from '$app/navigation';
+
+	import { deleteFilm } from '$lib/api';
+
+	const handleDelete = async () => {
+		if (film.id !== undefined) {
+			const response = await deleteFilm(film.id.toString());
+			if (response.success) {
+				goto('/films');
+			} else {
+				console.error('Failed to delete film');
+			}
+		}
+	};
 </script>
 
 <div class="flex w-full container">
@@ -46,7 +61,13 @@
 				<p>Editar</p>
 			</div>
 			<div>
-				<p>Excluir</p>
+				<button
+					on:click={handleDelete}
+					class="flex justify-center items-center gap-2 bg-red-500 hover:bg-red-700 px-4 py-2 rounded w-full font-bold text-white"
+				>
+					<IconTrash size={30} />
+					Excluir
+				</button>
 			</div>
 		</div>
 	</div>
