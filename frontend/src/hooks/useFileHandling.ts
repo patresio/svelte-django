@@ -16,9 +16,14 @@ export function useFileHandling() {
         }
     }
 
+    function setImagePreviewUrl(url: string) {
+        imagePreviewUrl.set(url);
+    }
+
     return {
         imageFile,
         imagePreviewUrl,
-        handleFileChange
+        handleFileChange,
+		setImagePreviewUrl
     };
 }

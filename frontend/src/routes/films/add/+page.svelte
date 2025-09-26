@@ -1,9 +1,9 @@
 <script lang="ts">
-	import AddFormFilme from '../../../components/films/AddFormFilme.svelte';
+	import FilmForm from '../../../components/films/FilmForm.svelte';
 </script>
 
 <svelte:head>
-	<title>Add Film</title>
+	<title>Adicionar Filme</title>
 </svelte:head>
 
-<AddFormFilme />
+<FilmForm />

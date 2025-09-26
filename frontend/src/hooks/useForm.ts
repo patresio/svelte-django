@@ -39,10 +39,15 @@ export function useForm(initialInputs: FormField[]) {
         inputs.set(JSON.parse(JSON.stringify(initialInputs)));
     }
 
+	function setInputs(newInputs: FormField[]) {
+		inputs.set(newInputs);
+	}
+
 	return {
 		inputs,
 		validate,
 		validateAll,
-        reset
+        reset,
+		setInputs
 	};
 }
