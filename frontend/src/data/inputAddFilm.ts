@@ -1,29 +1,25 @@
-const inputAdd = [
-	{
-		type: 'file',
-		value: '',
-		id: 'image',
-		label: 'Image',
-		required: false,
-		error: false
-	},
+import type { FormField } from '../hooks/useForm';
+
+const inputAdd: FormField[] = [
 	{
 		type: 'text',
-		placeholder: 'Title',
+		placeholder: 'Titulo',
 		value: '',
 		id: 'title',
-		label: 'Title',
+		label: 'Titulo',
 		required: true,
-		error: false
+		error: '',
+		minLength: 3
 	},
 	{
 		type: 'text',
-		placeholder: 'Director',
+		placeholder: 'Diretor',
 		value: '',
 		id: 'director',
-		label: 'Director',
+		label: 'Diretor',
 		required: true,
-		error: false
+		error: '',
+		minLength: 7
 	},
 	{
 		type: 'text',
@@ -32,38 +28,40 @@ const inputAdd = [
 		id: 'sinopse',
 		label: 'Sinopse',
 		required: true,
-		error: false
+		error: '',
+		minLength: 10
 	},
 	{
 		type: 'text',
-		placeholder: 'Description',
+		placeholder: 'Descrição',
 		value: '',
 		id: 'description',
-		label: 'Description',
+		label: 'Descrição',
 		required: true,
-		error: false
+		error: '',
+		minLength: 10
 	},
 	{
 		type: 'number',
-		placeholder: 'Duration',
+		placeholder: 'Duração',
 		value: '',
 		id: 'duration',
-		label: 'Duration',
+		label: 'Duração',
 		required: true,
 		min: 0,
-		error: false
+		error: ''
 	},
 	{
 		type: 'number',
-		placeholder: 'Rating',
+		placeholder: 'Nota',
 		value: '',
 		id: 'rating',
-		label: 'Rating',
+		label: 'Nota',
 		required: true,
 		min: 0,
 		max: 10,
 		step: 0.1,
-		error: false
+		error: ''
 	}
 ];
 

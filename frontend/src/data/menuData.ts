@@ -3,15 +3,15 @@ import { writable } from 'svelte/store';
 
 export const menu = writable<Menu>([
 	{
-		name: 'Home',
+		name: 'Inicio',
 		href: '/'
 	},
 	{
-		name: 'Films',
+		name: 'Filmes',
 		href: '/films'
 	},
 	{
-		name: 'About',
+		name: 'Sobre',
 		href: '/about'
 	}
 ]);

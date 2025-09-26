@@ -1,7 +1,7 @@
 <script lang="ts">
 	import MenuItem from './MenuItem.svelte';
 
-	import { menu } from '../../data/menu-store';
+	import { menu } from '../../data/menuData';
 </script>
 
 <nav>

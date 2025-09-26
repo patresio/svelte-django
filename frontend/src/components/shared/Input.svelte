@@ -7,7 +7,7 @@
 	export let min: number | undefined = undefined;
 	export let max: number | undefined = undefined;
 	export let step: number | undefined = undefined;
-	export let error: boolean;
+	export let error: string;
 	export let required: boolean;
 </script>
 
@@ -26,6 +26,6 @@
 		class:border={error}
 	/>
 	{#if error}
-		<p class="text-red-500">* Campo obrigatório</p>
+		<p class="text-red-500">{error}</p>
 	{/if}
 </div>
