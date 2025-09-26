@@ -1,0 +1,16 @@
+{
+  "name": "svelte-django-monorepo",
+  "private": true,
+  "workspaces": [
+    "frontend",
+    "backend"
+  ],
+  "scripts": {
+    "dev": "concurrently \"npm:dev:frontend\" \"npm:dev:backend\"",
+    "dev:frontend": "cd frontend && npm run dev",
+    "dev:backend": "cd backend && ./.venv/bin/python manage.py runserver"
+  },
+  "devDependencies": {
+    "concurrently": "^8.2.2"
+  }
+}
