@@ -9,6 +9,14 @@ class FilmViewSet(viewsets.ModelViewSet):
     queryset = Film.objects.all()
     serializer_class = FilmSerializer
 
+    def perform_update(self, serializer):
+        old_instance = self.get_object()
+        if 'image' in serializer.validated_data:
+            if old_instance.image and old_instance.image != serializer.validated_data['image']:
+                if os.path.isfile(old_instance.image.path):
+                    os.remove(old_instance.image.path)
+        serializer.save()
+
     def perform_destroy(self, instance):
         if instance.image:
             if os.path.isfile(instance.image.path):

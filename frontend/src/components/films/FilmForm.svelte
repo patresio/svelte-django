@@ -1,56 +1,22 @@
 <script lang="ts">
+	import type { Film } from '../../models/Film';
 	import Input from '../shared/Input.svelte';
-	import { goto } from '$app/navigation';
 	import inputAdd from '../../data/inputAddFilm';
-	import { useForm } from '../../hooks/useForm';
 	import type { FormField } from '../../hooks/useForm';
-	import { useFileHandling } from '../../hooks/useFileHandling';
-	import { addFilm } from '../../lib/api';
+	import { useFilmForm } from '../../hooks/useFilmForm';
 
-	// Filter out the file input to handle it separately
+	export let film: Film | null = null;
+
 	let textInputs = inputAdd.filter((input: FormField) => input.type !== 'file');
-	const { inputs, validate, validateAll, reset } = useForm(textInputs);
-	const { imageFile, imagePreviewUrl, handleFileChange } = useFileHandling();
-
-	function handleBlur(index: number) {
-		inputs.update((currentInputs: FormField[]) => {
-			return currentInputs.map((input: FormField, i: number) => {
-				if (i === index) {
-					return validate(input);
-				}
-				return input;
-			});
-		});
-	}
-
-	async function handleSubmit() {
-		validateAll();
-
-		const hasTextError = $inputs.some((input: FormField) => input.error);
-		if (hasTextError || !$imageFile) {
-			if (!$imageFile) {
-				alert('Please select an image.');
-			}
-			return;
-		}
-
-		const { success, error } = await addFilm($inputs, $imageFile);
-
-		if (success) {
-			reset();
-			await goto('/films');
-		} else {
-			console.error('Failed to add film:', error);
-			alert(`Error: ${JSON.stringify(error)}`);
-		}
-	}
+	const { inputs, imagePreviewUrl, handleFileChange, handleBlur, handleSubmit, isEditMode } =
+		useFilmForm(film, textInputs);
 </script>
 
 <form
 	class="flex flex-col gap-4 bg-zinc-950 p-4 border border-zinc-600 rounded-md"
 	on:submit|preventDefault={handleSubmit}
 >
-	<h1 class="mb-4 font-bold text-2xl">Adicionar um Filme:</h1>
+	<h1 class="mb-4 font-bold text-2xl">{isEditMode ? 'Editar Filme' : 'Adicionar um Filme:'}</h1>
 
 	<!-- Separate File Input -->
 	<div class="flex justify-between h-32">
@@ -60,7 +26,7 @@
 				type="file"
 				id="image"
 				accept="image/*"
-				required
+				required={!isEditMode}
 				on:change={handleFileChange}
 				class="p-2 border border-zinc-600 rounded-md w-full text-zinc-300"
 			/>
@@ -89,6 +55,6 @@
 	{/each}
 
 	<button type="submit" class="bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded font-bold text-white"
-		>Add Film</button
+		>{isEditMode ? 'Salvar Alterações' : 'Adicionar Novo Filme'}</button
 	>
 </form>

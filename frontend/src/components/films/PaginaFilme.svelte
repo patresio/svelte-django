@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { IconClockHour4, IconTrash } from '@tabler/icons-svelte';
+	import { IconClockHour4, IconTrash, IconPencil } from '@tabler/icons-svelte';
 	import type { Film } from '../../models/Film';
 	export let film: Film;
 	import { goto } from '$app/navigation';
@@ -58,7 +58,13 @@
 				</div>
 			</div>
 			<div>
-				<p>Editar</p>
+				<a
+					href="/films/{film.id}/edit"
+					class="flex justify-center items-center gap-2 bg-blue-500 hover:bg-blue-700 px-4 py-2 rounded w-full font-bold text-white"
+				>
+					<IconPencil size={30} />
+					Editar
+				</a>
 			</div>
 			<div>
 				<button
