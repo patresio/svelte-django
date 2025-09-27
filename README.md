@@ -9,6 +9,7 @@ Um projeto web completo para gerenciar um catálogo de filmes, construído com u
 - **Adicionar Filmes:** Formulário para adicionar novos filmes ao catálogo.
 - **API RESTful:** Backend Django servindo os dados dos filmes.
 - **Frontend Reativo:** Interface construída com SvelteKit para uma experiência de usuário fluida.
+- **UI Dinâmica:** A estrutura do menu de navegação e dos formulários é fornecida pela API, permitindo alterações na interface sem a necessidade de modificar o código do frontend.
 
 ## 🛠️ Tecnologias Utilizadas
 
@@ -109,6 +110,21 @@ npm run dev
 
 - O frontend estará disponível em `http://localhost:5173`.
 - O backend estará disponível em `http://localhost:8000`.
+
+### 🌱 Populando o Banco de Dados (Seeding)
+
+Para adicionar dados de exemplo ao banco de dados, você pode usar o script de seeding. 
+
+**Importante:** O servidor de backend deve estar em execução antes de rodar o script.
+
+1.  Certifique-se de que o servidor de desenvolvimento (`npm run dev`) está rodando em um terminal.
+2.  Em um **novo terminal**, na raiz do projeto, execute o seguinte comando:
+
+    ```bash
+    node populate_db.mjs
+    ```
+
+Isso irá ler os filmes de exemplo e adicioná-los ao seu banco de dados através da API.
 
 ---
 

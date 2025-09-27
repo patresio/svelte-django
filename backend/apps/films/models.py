@@ -6,7 +6,7 @@ from PIL import Image
 
 
 class Film(models.Model):
-    image = models.ImageField(upload_to='images/')
+    image = models.ImageField(upload_to='images/', default='default.jpg')
     title = models.CharField(max_length=100)
     director = models.CharField(max_length=100)
     sinopse = models.TextField()

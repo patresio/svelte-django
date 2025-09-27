@@ -9,4 +9,4 @@
 	<title>Editar Filme</title>
 </svelte:head>
 
-<FilmForm film={data.film} />
+<FilmForm film={data.film} formFields={data.formFields} />
